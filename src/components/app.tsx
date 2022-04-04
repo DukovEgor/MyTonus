@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Root from '../pages/root';
+import SignUp from '../pages/sign-up';
 import { AppRoutes } from '../utils/conts';
 
 function App(): JSX.Element {
@@ -9,6 +10,10 @@ function App(): JSX.Element {
         <Route
           path={AppRoutes.Root}
           element={<Root />}
+        />
+        <Route
+          path={AppRoutes.SignUp}
+          element={<SignUp />}
         />
       </Routes>
     </BrowserRouter>

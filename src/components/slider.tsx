@@ -8,7 +8,6 @@ import { Pagination,  Autoplay, Navigation } from 'swiper';
 
 export default function Slider() {
 
-
   return (
     <section className="container__reviews">
       <h3 className="title">То, ради чего мы работаем...</h3>

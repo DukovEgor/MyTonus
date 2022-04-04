@@ -1,0 +1,114 @@
+.plans__screen {
+  padding: 100px 0;
+}
+.plans__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.plans__subtitle {
+  margin-bottom: 60px;
+
+}
+.plans {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 20px;
+}
+.plan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  flex: 1 1 33%;
+}
+.plan__head {
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  background: #00d4e620;
+  box-shadow: 0px 5px 15px rgba(0, 203, 169, 0.3);
+  border-radius: 10px 10px 0 0;
+}
+.plan__header {
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: #00d4e6;
+}
+.plan__price {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #00d4e680;
+}
+.plan__price__period{
+  font-size: 1rem;
+}
+.price__before {
+  text-decoration: line-through;
+  color: #00d4e650;
+  font-size: 1.2rem;
+}
+.plan__list {
+  padding: 20px 20px 60px;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 5px 15px rgba(0, 203, 169, 0.3);
+  font-size: 1.2rem;
+}
+.plan__list__item {
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+.li__ok {
+  width: 15px;
+  color: #ffc300;
+  margin-right: 5px;
+}
+.li__not {
+  width: 15px;
+  color: #ff5f5f;
+  margin-right: 5px;
+}
+.plan__main {
+  padding: 20px;
+  background-color: #0498a5;
+}
+.plan__link {
+  width: 200px;
+  display: block;
+  align-self: center;
+  padding: 17.5px 25px;
+  color: #fff;
+  background-color: #00d4e6;
+  border-radius: 50px;
+  text-align: center;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  transition: all .2s ease;
+}
+.plan__link:hover {
+  background-color: #5fedfa;
+}
+.plan__description {
+  padding: 20px;
+  border-radius: 20px;
+  color: #00d3e66e;
+  background: #00d4e610;
+  text-align: center;
+}
+@media (max-width: 668px) {
+  .plans__subtitle {
+    margin-bottom: 30px;
+    text-align: center;
+}
+  .plans {
+    flex-direction: column;
+  }
+  .plan__list__item {
+    font-size: 1.7rem;
+  }
+  .plan__link {
+    font-size: 2rem;
+  }
+}

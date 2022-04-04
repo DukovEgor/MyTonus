@@ -1,3 +1,4 @@
+import Price from './price';
 import Slider from './slider';
 
 export default function Main() {
@@ -48,6 +49,7 @@ export default function Main() {
           <img className="dots" src="/images/partners/dots.svg" alt="Тренажеры" />
         </div>
       </div>
+      <Price />
       <div className="about__screen bg-red">
         <div className="about__screen-container container">
           <div className="title__block ">
@@ -107,7 +109,9 @@ export default function Main() {
                 evt.currentTarget.classList.toggle('active');
               }}
               >
-                <dt className="spoil__title">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.</dt>
+                <dt className="spoil__title"><svg className='chevron' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={48} d="M112 184l144 144 144-144" /></svg>
+                  <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.</p>
+                </dt>
                 <dd className="spoil__answer">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные
                   тексты. Родного, на берегу решила. Маленький однажды она предложения бросил, ему повстречался.
                 </dd>
@@ -116,7 +120,9 @@ export default function Main() {
                 evt.currentTarget.classList.toggle('active');
               }}
               >
-                <dt className="spoil__title">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.</dt>
+                <dt className="spoil__title"><svg className='chevron' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={48} d="M112 184l144 144 144-144" /></svg>
+                  <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.</p>
+                </dt>
                 <dd className="spoil__answer">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные
                   тексты. Родного, на берегу решила. Маленький однажды она предложения бросил, ему повстречался.
                 </dd>
@@ -125,7 +131,9 @@ export default function Main() {
                 evt.currentTarget.classList.toggle('active');
               }}
               >
-                <dt className="spoil__title">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.</dt>
+                <dt className="spoil__title"><svg className='chevron' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={48} d="M112 184l144 144 144-144" /></svg>
+                  <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.</p>
+                </dt>
                 <dd className="spoil__answer">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные
                   тексты. Родного, на берегу решила. Маленький однажды она предложения бросил, ему повстречался.
                 </dd>
@@ -223,7 +231,7 @@ export default function Main() {
               </div>
             </div>
           </div>
-          <Slider/>
+          <Slider />
         </div>
       </div>
     </main>
