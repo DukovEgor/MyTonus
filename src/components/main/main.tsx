@@ -1,5 +1,5 @@
-import Price from './price';
-import Slider from './slider';
+import Price from '../price/price';
+import Slider from '../slider/slider';
 
 export default function Main() {
   return (
