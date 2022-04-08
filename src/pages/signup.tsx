@@ -2,6 +2,7 @@ import { Box, createTheme, CssBaseline, Grid, Paper, Step, StepLabel, Stepper, T
 import { useAppSelector } from './../hooks/storeHooks';
 import { steps } from './../utils/conts';
 import StepOne from './steps/step-one';
+import StepThree from './steps/step-three';
 import StepTwo from './steps/step-two';
 import './style.css';
 
@@ -34,6 +35,8 @@ export default function SignUp() {
         return <StepOne currentStep={currentStep} />;
       case 1:
         return <StepTwo currentStep={currentStep} />;
+      case 2:
+        return <StepThree currentStep={currentStep} />;
       default:
         break;
     }
