@@ -66,7 +66,11 @@ export default function Header(): JSX.Element {
             </Link>
           </div>
         </div>
-        <div className="header__menu menu--burger" onClick={() => setIsBurgerActive((prevState) => !prevState)}>
+        <div className="header__menu menu--burger" onClick={() => {
+          setIsBurgerActive((prevState) => !prevState);
+          document.body.classList.toggle('lock');
+        }}
+        >
           {isBurgerActive ? (
             <svg className="back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={50} d="M256 112v288M400 256H112" />

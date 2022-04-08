@@ -36,7 +36,7 @@ nav,footer,header,aside{display: block;}
 html,body{
 	height: 100%;
 	width: 100%;
-	font-size: 100%;
+  font-size: 100%;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -45,7 +45,6 @@ html,body{
   scroll-behavior: smooth;
 }
 body {
-	font-size: 14px;
 	-webkit-font-smoothing: antialiased;
 	-webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -185,7 +184,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 700;}
 
 
 /* ////////////////////////////////////////////////HEADER////////////////////////////////////////////////////////////// */
-main {
+.main {
   overflow: hidden;
 }
 .main__screen {
@@ -246,22 +245,13 @@ main {
   background-color: var(--primary-color);
 }
 .main__right {
+  position: relative;
   flex: 0 1 auto;
 }
 .main__right-img {
   position: relative;
     right: 0;
     bottom: 0;
-  z-index: 2;
-}
-.line--left, .line--right {
-  position: absolute;
-}
-.line--left {
-  left: 40%;
-}
-.line--right {
-  right: 0;
   z-index: 2;
 }
 
@@ -887,7 +877,7 @@ top: 120px;
     transform: translateY(10%);
   }
   .navigation__wrapper.active .controls .sign-up {
-  padding: 35px 50px;
+  padding: 35px 30px;
   color: #fff;
   border-radius: 10px;
   }
@@ -1020,8 +1010,8 @@ top: 120px;
     height: 3rem;
     transform: translateY(0%);
   }
-  .header .controls .sign-up {
-    padding: 10px 15px 20px;
+  .navigation__wrapper.active .controls .sign-up {
+    padding: 25px 20px;
   }
 
 

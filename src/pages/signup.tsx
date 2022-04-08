@@ -3,6 +3,7 @@ import { useAppSelector } from './../hooks/storeHooks';
 import { steps } from './../utils/conts';
 import StepOne from './steps/step-one';
 import StepTwo from './steps/step-two';
+import './style.css';
 
 const theme = createTheme({
   typography: {
@@ -32,7 +33,7 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }} >
+      <Grid container component="main" height={'100vh'}>
         <CssBaseline />
         <Grid
           item
