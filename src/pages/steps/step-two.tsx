@@ -1,48 +1,49 @@
-import { Box, Typography, TextField, FormControlLabel, Checkbox, Button, Grid, Link, InputAdornment } from '@mui/material';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { Box, Typography, TextField, Button, Grid, InputAdornment, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useAppDispatch } from '../../hooks/storeHooks';
 import { setCurrentStep } from '../../store/app-process';
 import { steps } from '../../utils/conts';
-
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from '@mui/lab/DatePicker';
+import DateAdapter from '@mui/lab/AdapterDayjs';
+import { startRegistration } from '../../store/api-actions';
 
 export default function StepTwo({ currentStep }: { currentStep: number }) {
 
+  const [value, setValue] = useState<Date | null>(null);
+  const [genderValue, setGenderValue] = useState('female');
+
   const dispatch = useAppDispatch();
 
-  const handleNext = (data: unknown) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+  const handleNext: SubmitHandler<FieldValues> = (data) => {
 
-    if (isValid && isDirty) {
-      dispatch(setCurrentStep(currentStep + 1));
-    }
+    dispatch(startRegistration(data));
   };
 
   const handleBack = () => {
     dispatch(setCurrentStep(currentStep - 1));
   };
 
-  const { register, handleSubmit, formState: { errors, isDirty, isValid, isSubmitting } } = useForm({ mode: 'onBlur' });
+  const { register, handleSubmit, formState: { errors, isDirty, isSubmitting } } = useForm({ mode: 'onSubmit' });
 
   useEffect(() => {
     toast.warning(errors.height?.message);
     toast.warning(errors.weight?.message);
-  });
+    toast.warning(errors.dateBirth?.message);
+  }, [errors.dateBirth?.message, errors.height?.message, errors.weight?.message]);
+
 
   return (
     <Box component={'form'} onSubmit={handleSubmit(handleNext)}>
       <Typography variant='h5' component={'h2'} mb={4}>Какой у Вас рост и вес?</Typography>
       <Grid container spacing={3} >
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6}>
           <TextField
             {...register('height', {
               required: '"Рост" это обязательное поле',
-              pattern: {
-                value: /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u,
-                message: '"Рост" не может состоять из цифр и специальных символов',
-              },
+              min: 100,
             })}
             required
             InputProps={{
@@ -52,27 +53,22 @@ export default function StepTwo({ currentStep }: { currentStep: number }) {
             name="height"
             label="Рост"
             fullWidth
-            autoComplete="given-name"
             variant="outlined"
             error={!!errors.height}
             autoFocus
           />
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6}>
           <TextField
             {...register('weight', {
               required: '"Вес" это обязательное поле',
-              pattern: {
-                value: /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u,
-                message: '"Вес" не может состоять из цифр и специальных символов',
-              },
+              min: 30,
             })}
             required
             id="weight"
             name="weight"
             label="Вес"
             fullWidth
-            autoComplete="family-name"
             variant="outlined"
             InputProps={{
               endAdornment: <InputAdornment position="end">кг</InputAdornment>,
@@ -81,61 +77,48 @@ export default function StepTwo({ currentStep }: { currentStep: number }) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
-            {...register('email',
-              {
-                required: '"E-mail" это обязательное поле',
-                minLength: 4,
-                pattern: {
-                  value:
-                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: 'Пожалуйста, введите корректный адрес электронной почты',
-                },
-              },
-            )}
-            required
-            id="email"
-            name="email"
-            label="Электронная почта"
-            fullWidth
-            variant="outlined"
-            type={'email'}
-          />
+          <LocalizationProvider dateAdapter={DateAdapter}>
+            <DatePicker
+              label="Дата рождения"
+              cancelText='Отмена'
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue);
+              }}
+              renderInput={(params) => (
+                <TextField fullWidth {...params} {...register('dateBirth', {
+                  required: '"Дата рождения" это обязательное поле',
+                })}
+                />)}
+            />
+          </LocalizationProvider>
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
-            {...register('tel',
-              {
-                required: '"Телефон" это обязательное поле',
-                minLength: 4,
-                pattern: {
-                  value:
-                    /^\+?[78][-(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/,
-                  message: 'Пожалуйста, введите корректный номер мобильного телефона',
-                },
-              },
-            )}
-            required
-            id="tel"
-            name="tel"
-            label="Мобильный телефон"
-            fullWidth
-            variant="outlined"
-            type={'tel'}
-          />
+          <FormControl>
+            <FormLabel id="demo-row-radio-buttons-group-label">Пол</FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              value={genderValue}
+              onChange={(evt) => setGenderValue(evt.target.value)}
+            >
+              <FormControlLabel value="female" control={
+                <Radio {...register('gender', {
+                  required: '"Дата рождения" это обязательное поле',
+                })}
+                />
+              } label="Женщина"
+              />
+              <FormControlLabel value="male" control={
+                <Radio {...register('gender', {
+                  required: '"Дата рождения" это обязательное поле',
+                })}
+                />
+              } label="Мужчина"
+              />
+            </RadioGroup>
+          </FormControl>
         </Grid>
-        <Box sx={{ p: 3, pr: 0 }} >
-          <FormControlLabel
-            sx={{ backgroundColor: '#BAE6FF50', borderRadius: '10px', mb: 1, py: 2 }}
-            control={<Checkbox value="remember" color="primary" required />}
-            label={<Typography variant='caption' component={'span'}>Регистрируясь на сайте вы ознакомились и соглашаетесь с <Link underline="none" href={'/'}>договором оферты</Link>, <Link underline="none" href={'/'}>политикой конфиденциальности</Link>, <Link underline="none" href={'/'}>тарифами</Link> и даёте своё <Link underline="none" href={'/'}>согласие на обработку персональных данных</Link>.</Typography>}
-          />
-          <FormControlLabel
-            sx={{ backgroundColor: '#BAE6FF50', borderRadius: '10px', py: 2 }}
-            control={<Checkbox value="remember" color="primary" required />}
-            label={<Typography variant='caption' component={'p'}>Соглашаетесь с <Link underline="none" href={'/'}>тарифами</Link> сервиса и <Link underline="none" href={'/'}>рекуррентными</Link> платежами. Первое списание в размере 889 ₽ через 72 часа после подписки и далее, согласно тарифу раз в 5 дней 889 ₽</Typography>}
-          />
-        </Box>
       </Grid>
       <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', pt: 2, pb: 1 }} >
         <Button
@@ -151,7 +134,7 @@ export default function StepTwo({ currentStep }: { currentStep: number }) {
           color='primary'
           variant='contained'
           type='submit'
-          disabled={!isDirty || !isValid || isSubmitting}
+          disabled={!isDirty || isSubmitting}
         >
           {currentStep === steps.length - 1
             ? 'Завершить'

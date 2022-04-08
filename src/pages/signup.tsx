@@ -14,6 +14,14 @@ const theme = createTheme({
       'sans-serif',
     ].join(','),
   },
+  palette: {
+    primary: {
+      light: '#00d4e6',
+      main: '#00d4e6',
+      dark: '#00d4e699',
+      contrastText: '#fff',
+    },
+  },
 });
 
 export default function SignUp() {
@@ -53,6 +61,9 @@ export default function SignUp() {
             mx: 4,
           }}
           >
+            <a href="/" className="logo">
+              <img src="/images/logo.svg" alt="" />
+            </a>
             <Stepper activeStep={currentStep} sx={{ flexWrap: 'wrap', my: 6 }}>
               {steps.map((label) => (
                 <Step color='success' key={label} sx={{ mb: 1 }}>

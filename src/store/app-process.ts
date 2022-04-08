@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../utils/conts';
 
 const initialState = {
-  currentStep: 0,
+  currentStep: 1,
 };
 
 export const appProcess = createSlice({

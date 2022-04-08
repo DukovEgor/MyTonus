@@ -25,16 +25,28 @@ export default function StepOne({ currentStep }: { currentStep: number }) {
   };
 
 
-  const { register, handleSubmit, formState: { errors, isDirty, isValid, isSubmitting } } = useForm({ mode: 'onBlur' });
+  const { register, handleSubmit, formState: { errors, isDirty, isSubmitting } } = useForm({ mode: 'onSubmit' });
 
   useEffect(() => {
-    toast.warning(errors.firstName?.message);
-    toast.warning(errors.lastName?.message);
-    toast.warning(errors.email?.message);
-    toast.warning(errors.tel?.message);
-    toast.warning(errors.secondCheckbox?.message);
-    toast.warning(errors.firstCheckbox?.message);
-  });
+    toast.warning(errors.firstName?.message, {
+      position: toast.POSITION.TOP_LEFT,
+    });
+    toast.warning(errors.lastName?.message, {
+      position: toast.POSITION.TOP_LEFT,
+    });
+    toast.warning(errors.email?.message, {
+      position: toast.POSITION.TOP_LEFT,
+    });
+    toast.warning(errors.tel?.message, {
+      position: toast.POSITION.TOP_LEFT,
+    });
+    toast.warning(errors.secondCheckbox?.message, {
+      position: toast.POSITION.TOP_LEFT,
+    });
+    toast.warning(errors.firstCheckbox?.message, {
+      position: toast.POSITION.TOP_LEFT,
+    });
+  }, [errors.email?.message, errors.firstCheckbox?.message, errors.firstName?.message, errors.lastName?.message, errors.secondCheckbox?.message, errors.tel?.message]);
 
   return (
 
@@ -131,7 +143,7 @@ export default function StepOne({ currentStep }: { currentStep: number }) {
         </Grid>
         <Box sx={{ p: 3, pr: 0 }} >
           <FormControlLabel
-            sx={{ backgroundColor: `${errors.firstCheckbox ? '#fff' : '#BAE6FF50'}`, border: `${errors.firstCheckbox ? '1px solid #e74c3c' : 'none'}`, borderRadius: '10px', mb: 1, py: 2 }}
+            sx={{ backgroundColor: `${errors.firstCheckbox ? '#fff' : '#BAE6FF50'}`, border: `${errors.firstCheckbox ? '1px solid #e74c3c' : 'none'}`, borderRadius: '10px', mb: 1, py: 2, pr: 2 }}
             control={
               <Checkbox
                 {...register('firstCheckbox', {
@@ -145,7 +157,7 @@ export default function StepOne({ currentStep }: { currentStep: number }) {
             label={<Typography variant='caption' component={'span'}>Регистрируясь на сайте вы ознакомились и соглашаетесь с <Link underline="none" href={'/'}>договором оферты</Link>, <Link underline="none" href={'/'}>политикой конфиденциальности</Link>, <Link underline="none" href={'/'}>тарифами</Link> и даёте своё <Link underline="none" href={'/'}>согласие на обработку персональных данных</Link>.</Typography>}
           />
           <FormControlLabel
-            sx={{ backgroundColor: `${errors.firstCheckbox ? '#fff' : '#BAE6FF50'}`, border: `${errors.secondCheckbox ? '1px solid #e74c3c' : 'none'}`, borderRadius: '10px', py: 2 }}
+            sx={{ backgroundColor: `${errors.firstCheckbox ? '#fff' : '#BAE6FF50'}`, border: `${errors.secondCheckbox ? '1px solid #e74c3c' : 'none'}`, borderRadius: '10px', py: 2, pr: 2 }}
             control={
               <Checkbox
                 {...register('secondCheckbox', {
@@ -171,7 +183,7 @@ export default function StepOne({ currentStep }: { currentStep: number }) {
           color='primary'
           variant='contained'
           type='submit'
-          disabled={!isDirty || !isValid || isSubmitting}
+          disabled={!isDirty || isSubmitting}
         >
           {currentStep === steps.length - 1
             ? 'Завершить'
