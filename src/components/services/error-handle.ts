@@ -20,6 +20,9 @@ export const errorHandle = (error: unknown): void => {
       case HTTP_CODE.NOT_FOUND:
         toast.info(response.data.error);
         break;
+      case HTTP_CODE.ERR_FAILED:
+        toast.info(response.data.error);
+        break;
     }
   }
 };
