@@ -1,8 +1,12 @@
+/* eslint-disable no-console */
 import { Box, Typography, Button, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch } from '../../hooks/storeHooks';
 import { setCurrentStep } from '../../store/app-process';
 import { steps } from '../../utils/conts';
+import {useState, useEffect} from 'react';
+
+const processingMessage = ['Анализ данных...', 'Запускаем конфигурацию рациона...', 'Рассчет сроков...', 'Прогнозируем результат...', 'Осталось немного...'];
 
 export default function StepFour({ currentStep }: { currentStep: number }) {
 
@@ -20,11 +24,22 @@ export default function StepFour({ currentStep }: { currentStep: number }) {
 
   const { handleSubmit } = useForm({ mode: 'onSubmit' });
 
-  // const processingMessage = ['Анализ данных...', 'Запускаем конфигурацию рациона...', 'Рассчет сроков...', 'Прогнозируем результат...', 'Осталось немного...'];
+  const [message, setMessage] = useState<string>('Загрузка...');
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMessage(processingMessage[0]);
+
+    }, 3000);
+    return () => {
+      processingMessage.reverse().pop();
+    };
+  });
+
 
   return (
     <Box component={'form'} onSubmit={handleSubmit(handleNext)}>
-      <Typography variant='h5' component={'h2'} mb={4}></Typography>
+      <Typography variant='h5' component={'h2'} mb={4}>{message}</Typography>
       <Grid container spacing={3} mb={4} pl={3}>
       </Grid>
       <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', pt: 2, pb: 1 }} >

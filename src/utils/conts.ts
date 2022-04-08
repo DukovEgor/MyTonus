@@ -19,4 +19,4 @@ export enum NameSpace {
 export enum APIRoute {
   User = 'fit/new-user?site_id=1'
 }
-export const steps = ['Контакты', 'Параметры', 'Предпочтения', 'Платежи', 'Готово!'];
+export const steps = ['Контакты', 'Параметры', 'Предпочтения', 'Готовим результат', 'Готово!'];
