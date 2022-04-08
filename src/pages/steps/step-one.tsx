@@ -1,4 +1,12 @@
-import { Box, Typography, TextField, FormControlLabel, Checkbox, Button, Grid, Link } from '@mui/material';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -32,6 +40,7 @@ export default function StepOne({ currentStep }: { currentStep: number }) {
 
 
     <Box component={'form'} onSubmit={handleSubmit(handleNext)}>
+      <CssBaseline />
       <Typography variant='h5' component={'h2'} mb={4}>Для получения доступа к сервису необходимо заполнить следующие данные:</Typography>
       <Grid container spacing={3} >
         <Grid item xs={12} md={6}>
