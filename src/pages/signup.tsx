@@ -1,6 +1,7 @@
 import { Box, createTheme, CssBaseline, Grid, Paper, Step, StepLabel, Stepper, ThemeProvider } from '@mui/material';
 import { useAppSelector } from './../hooks/storeHooks';
 import { steps } from './../utils/conts';
+import StepFour from './steps/step-four';
 import StepOne from './steps/step-one';
 import StepThree from './steps/step-three';
 import StepTwo from './steps/step-two';
@@ -37,6 +38,8 @@ export default function SignUp() {
         return <StepTwo currentStep={currentStep} />;
       case 2:
         return <StepThree currentStep={currentStep} />;
+      case 3:
+        return <StepFour currentStep={currentStep} />;
       default:
         break;
     }
