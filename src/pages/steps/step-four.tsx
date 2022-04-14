@@ -1,12 +1,11 @@
-/* eslint-disable no-console */
-import { Box, Typography, Button, Grid } from '@mui/material';
+import { Box, Typography, Button, Grid, CircularProgress } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch } from '../../hooks/storeHooks';
 import { setCurrentStep } from '../../store/app-process';
 import { steps } from '../../utils/conts';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
-const processingMessage = ['Анализ данных...', 'Запускаем конфигурацию рациона...', 'Рассчет сроков...', 'Прогнозируем результат...', 'Осталось немного...'];
+const processingMessage = ['Анализ данных...', 'Прогнозируем результат...', 'Осталось немного...', 'Рассчет сроков...', 'Запускаем конфигурацию рациона...'];
 
 export default function StepFour({ currentStep }: { currentStep: number }) {
 
@@ -30,7 +29,7 @@ export default function StepFour({ currentStep }: { currentStep: number }) {
     setTimeout(() => {
       setMessage(processingMessage[0]);
 
-    }, 3000);
+    }, 1000);
     return () => {
       processingMessage.reverse().pop();
     };
@@ -39,7 +38,7 @@ export default function StepFour({ currentStep }: { currentStep: number }) {
 
   return (
     <Box component={'form'} onSubmit={handleSubmit(handleNext)}>
-      <Typography variant='h5' component={'h2'} mb={4}>{message}</Typography>
+      <Typography variant='h5' component={'h2'} mb={4}>{processingMessage.length > 0 && <CircularProgress size={22} sx={{mr: 1}} />}{message}</Typography>
       <Grid container spacing={3} mb={4} pl={3}>
       </Grid>
       <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', pt: 2, pb: 1 }} >
