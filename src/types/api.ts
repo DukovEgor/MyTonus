@@ -6,3 +6,7 @@ export interface IStartRegistration {
   tel: number,
   email: string,
 }
+export type AuthData = {
+  login: string,
+  password: string,
+};

@@ -1,6 +1,8 @@
 import { Box, createTheme, CssBaseline, Grid, Paper, Step, StepLabel, Stepper, ThemeProvider } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from './../hooks/storeHooks';
 import { steps } from './../utils/conts';
+import StepFive from './steps/step-five';
 import StepFour from './steps/step-four';
 import StepOne from './steps/step-one';
 import StepThree from './steps/step-three';
@@ -40,6 +42,8 @@ export default function SignUp() {
         return <StepThree currentStep={currentStep} />;
       case 3:
         return <StepFour currentStep={currentStep} />;
+      case 4:
+        return <StepFive currentStep={currentStep} />;
       default:
         break;
     }
@@ -67,9 +71,9 @@ export default function SignUp() {
             mx: 4,
           }}
           >
-            <a href="/" className="logo">
+            <Link to="/" className="logo">
               <img src="/images/logo.svg" alt="" />
-            </a>
+            </Link>
             <Stepper activeStep={currentStep} sx={{ flexWrap: 'wrap', my: 6 }}>
               {steps.map((label) => (
                 <Step color='success' key={label} sx={{ mb: 1 }}>

@@ -16,7 +16,16 @@ export enum NameSpace {
   user = 'USER',
   app = 'APP',
 }
-export enum APIRoute {
-  User = 'fit/new-user?site_id=1'
+
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
 }
+
+export enum APIRoute {
+  User = 'fit/new-user?site_id=1',
+  Login = 'fit/new-user',
+}
+
 export const steps = ['Контакты', 'Параметры', 'Предпочтения', 'Готовим результат', 'Готово!'];

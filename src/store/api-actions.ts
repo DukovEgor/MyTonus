@@ -3,8 +3,10 @@ import { FieldValues } from 'react-hook-form';
 import { api, store } from '.';
 import { errorHandle } from '../components/services/error-handle';
 import { saveToken } from '../components/services/token';
-import { APIRoute } from '../utils/conts';
+import { AuthData } from '../types/api';
+import { APIRoute, AuthorizationStatus } from '../utils/conts';
 import { setCurrentStep } from './app-process';
+import { requireAuthorization, setUserData } from './user-process';
 
 export const startRegistration = createAsyncThunk(
   'user/firstStep',
@@ -23,3 +25,37 @@ export const startRegistration = createAsyncThunk(
   },
 );
 
+export const checkAuthAction = createAsyncThunk(
+  'user/checkAuth',
+  async () => {
+    try {
+
+      const { data } = await api.get(APIRoute.Login);
+      store.dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      store.dispatch(setUserData(data));
+
+    } catch (error) {
+
+      errorHandle(error);
+      store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    }
+  },
+);
+
+export const loginAction = createAsyncThunk(
+  'user/login',
+  async ({ login: email, password }: AuthData) => {
+    try {
+
+      const { data } = await api.post(APIRoute.Login, { email, password });
+      saveToken(data.token);
+      store.dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      store.dispatch(setUserData(data));
+
+    } catch (error) {
+
+      errorHandle(error);
+      store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    }
+  },
+);

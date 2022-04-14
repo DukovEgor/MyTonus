@@ -25,7 +25,7 @@ export default function StepOne({ currentStep }: { currentStep: number }) {
   };
 
 
-  const { register, handleSubmit, formState: { errors, isDirty, isSubmitting } } = useForm({ mode: 'onSubmit' });
+  const { register, handleSubmit, formState: { errors, isDirty, isSubmitting, submitCount } } = useForm({ mode: 'onSubmit' });
 
   useEffect(() => {
     toast.warning(errors.firstName?.message, {
@@ -46,7 +46,7 @@ export default function StepOne({ currentStep }: { currentStep: number }) {
     toast.warning(errors.firstCheckbox?.message, {
       position: toast.POSITION.TOP_LEFT,
     });
-  }, [errors.email?.message, errors.firstCheckbox?.message, errors.firstName?.message, errors.lastName?.message, errors.secondCheckbox?.message, errors.tel?.message]);
+  }, [errors.email?.message, errors.firstCheckbox?.message, errors.firstName?.message, errors.lastName?.message, errors.secondCheckbox?.message, errors.tel?.message, submitCount]);
 
   return (
 
