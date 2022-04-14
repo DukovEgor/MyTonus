@@ -107,14 +107,14 @@ export default function StepTwo({ currentStep }: { currentStep: number }) {
                   required: '"Дата рождения" это обязательное поле',
                 })}
                 />
-              } label="Женщина"
+              } label="Женский"
               />
               <FormControlLabel value="male" control={
                 <Radio {...register('gender', {
                   required: '"Дата рождения" это обязательное поле',
                 })}
                 />
-              } label="Мужчина"
+              } label="Мужской"
               />
             </RadioGroup>
           </FormControl>

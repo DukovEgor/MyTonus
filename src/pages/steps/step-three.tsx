@@ -26,6 +26,7 @@ const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
 }));
 const StyledLabel = styled(FormControlLabel)(({ theme }) => ({
   flexDirection: 'column',
+  alignItems: 'center',
 }));
 
 
@@ -51,7 +52,7 @@ export default function StepThree({ currentStep }: { currentStep: number }) {
       <Typography variant='h5' component={'h2'} mb={4}>Выберите то, без чего не сможете обойтись:</Typography>
       <Grid container spacing={3} mb={4} pl={3}>
         <Grid item md={6} lg={3}>
-          <StyledLabel control={<StyledCheckbox icon={<EmojiFoodBeverageOutlinedIcon fontSize='inherit' />} checkedIcon={<EmojiFoodBeverageIcon fontSize='inherit' />} />} label="Горячие напитки" />
+          <StyledLabel control={<StyledCheckbox icon={<EmojiFoodBeverageOutlinedIcon fontSize='inherit' />} checkedIcon={<EmojiFoodBeverageIcon fontSize='inherit' />} />} label="Чай/Кофе" />
         </Grid>
         <Grid item md={6} lg={3}>
           <StyledLabel control={<StyledCheckbox icon={<FastfoodOutlinedIcon fontSize='inherit' />} checkedIcon={<FastfoodIcon fontSize='inherit' />} />} label="Фастфуд" />
@@ -72,7 +73,7 @@ export default function StepThree({ currentStep }: { currentStep: number }) {
           <StyledLabel control={<StyledCheckbox icon={<EggAltOutlinedIcon fontSize='inherit' />} checkedIcon={<EggAltIcon fontSize='inherit' />} />} label="Жареное" />
         </Grid>
         <Grid item md={6} lg={3}>
-          <StyledLabel control={<StyledCheckbox icon={<DinnerDiningOutlinedIcon fontSize='inherit' />} checkedIcon={<DinnerDiningIcon fontSize='inherit' />} />} label="" />
+          <StyledLabel control={<StyledCheckbox icon={<DinnerDiningOutlinedIcon fontSize='inherit' />} checkedIcon={<DinnerDiningIcon fontSize='inherit' />} />} label="Макароны" />
         </Grid>
       </Grid>
       <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', pt: 2, pb: 1 }} >
