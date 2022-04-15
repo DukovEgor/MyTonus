@@ -1,3 +1,4 @@
+import Accordeon from '../accordeon/accordeon';
 import Price from '../price/price';
 import Slider from '../slider/slider';
 
@@ -104,41 +105,7 @@ export default function Main() {
             <a href="/" className="about__sign-up">Создать аккаунт</a>
           </div>
           <div className="how__right">
-            <dl className="steps__list one spoiler">
-              <div className="row__spoil active" onClick={(evt) => {
-                evt.currentTarget.classList.toggle('active');
-              }}
-              >
-                <dt className="spoil__title"><svg className='chevron' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={48} d="M112 184l144 144 144-144" /></svg>
-                  <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.</p>
-                </dt>
-                <dd className="spoil__answer">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные
-                  тексты. Родного, на берегу решила. Маленький однажды она предложения бросил, ему повстречался.
-                </dd>
-              </div>
-              <div className="row__spoil" onClick={(evt) => {
-                evt.currentTarget.classList.toggle('active');
-              }}
-              >
-                <dt className="spoil__title"><svg className='chevron' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={48} d="M112 184l144 144 144-144" /></svg>
-                  <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.</p>
-                </dt>
-                <dd className="spoil__answer">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные
-                  тексты. Родного, на берегу решила. Маленький однажды она предложения бросил, ему повстречался.
-                </dd>
-              </div>
-              <div className="row__spoil" onClick={(evt) => {
-                evt.currentTarget.classList.toggle('active');
-              }}
-              >
-                <dt className="spoil__title"><svg className='chevron' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>Chevron Down</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={48} d="M112 184l144 144 144-144" /></svg>
-                  <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.</p>
-                </dt>
-                <dd className="spoil__answer">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные
-                  тексты. Родного, на берегу решила. Маленький однажды она предложения бросил, ему повстречался.
-                </dd>
-              </div>
-            </dl>
+            <Accordeon />
           </div>
         </div>
         <img className="dots how__screen-dots" src="/images/partners/dots.svg" alt="Тренажеры" />

@@ -7,7 +7,6 @@ import StepFour from './steps/step-four';
 import StepOne from './steps/step-one';
 import StepThree from './steps/step-three';
 import StepTwo from './steps/step-two';
-import './style.css';
 
 const theme = createTheme({
   typography: {
