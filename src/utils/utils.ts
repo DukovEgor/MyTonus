@@ -1,3 +1,11 @@
+import dayjs from 'dayjs';
+
+export const getResultDay = () => {
+  const today = dayjs();
+  today.add(30, 'day');
+};
+
+
 export const IMT = (height: number, weight: number) => Number((weight / (Math.pow(height, 2))) * 10000).toFixed(1);
 
 export const IMTdesc = (imt: number): string => {

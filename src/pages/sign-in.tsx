@@ -81,12 +81,12 @@ export default function SignIn() {
                 Войти
               </Button>
               <Grid container>
-                <Grid item xs={12} md={5}>
+                <Grid item xs={12} lg={9}>
                   <Link to="#">
                     Забыли пароль?
                   </Link>
                 </Grid>
-                <Grid item xs={12} md={7}>
+                <Grid item xs={12} lg={3}>
                   <Link to="#">
                     {'Еще нет аккаунта? Регистрация.'}
                   </Link>

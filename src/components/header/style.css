@@ -1,17 +1,17 @@
 @font-face {
-  src: local('0'), url('/fonts/FuturaPT-Light.woff') format('woff'), url('/fonts/FuturaPT-Light.ttf') format('truetype');
+  src: local('0'), url('./fonts/FuturaPT-Light.woff') format('woff'), url('./fonts/FuturaPT-Light.ttf') format('truetype');
   font-family: 'FuturaPT';
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  src: local('0'), url('/fonts/FuturaPT-Medium.woff') format('woff'), url('/fonts/FuturaPT-Medium.ttf') format('truetype');
+  src: local('0'), url('./fonts/FuturaPT-Medium.woff') format('woff'), url('./fonts/FuturaPT-Medium.ttf') format('truetype');
   font-family: 'FuturaPT';
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  src: local('0'), url('/fonts/FuturaPT-Bold.woff') format('woff'), url('/fonts/FuturaPT-Bold.ttf') format('truetype');
+  src: local('0'), url('./fonts/FuturaPT-Bold.woff') format('woff'), url('./fonts/FuturaPT-Bold.ttf') format('truetype');
   font-family: 'FuturaPT';
   font-weight: 700;
   font-style: normal;
