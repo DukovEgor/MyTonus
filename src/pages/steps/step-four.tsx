@@ -1,21 +1,21 @@
 import { Box, Typography, Button, Grid, CircularProgress, Divider } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { useAppDispatch } from '../../hooks/storeHooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import { setCurrentStep } from '../../store/app-process';
 import { steps } from '../../utils/conts';
 import { useState, useEffect } from 'react';
 import Chart from './steps-images/chart';
-import { IMT, IMTdesc } from '../../utils/utils';
+import { getChartDay, getResultDay, IMT, IMTdesc } from '../../utils/utils';
 import Transform from './steps-images/transform';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import Plan from './steps-images/plan';
-import dayjs from 'dayjs';
 
 const processingMessage = ['Анализ данных...', 'Прогнозируем результат...', 'Осталось немного...', 'Рассчет сроков...', 'Запускаем конфигурацию рациона...'];
 
 export default function StepFour({ currentStep }: { currentStep: number }) {
 
   const dispatch = useAppDispatch();
+  const { height, weight } = useAppSelector(({ USER }) => USER);
 
   const handleNext = () => {
 
@@ -35,7 +35,7 @@ export default function StepFour({ currentStep }: { currentStep: number }) {
     setTimeout(() => {
       setMessage(processingMessage[0]);
 
-    }, 0);
+    }, 3000);
     return () => {
       processingMessage.reverse().pop();
     };
@@ -52,9 +52,9 @@ export default function StepFour({ currentStep }: { currentStep: number }) {
       {processingMessage.length === 0 && (
         <Grid container spacing={3} mb={4} pl={3}>
           <Grid item xs={12}>
-            <Typography fontWeight={'600'} variant='h4' textAlign={'center'} sx={{ color: '#00d4e6' }}>30кг</Typography>
-            <Typography textAlign={'center'} sx={{ color: '#8759f2' }}>к {dayjs().add(1, 'month')}</Typography>
-            <Chart />
+            <Typography fontWeight={'600'} variant='h4' textAlign={'center'} sx={{ color: '#00d4e6' }}>{(weight * 0.8).toFixed(0)}кг</Typography>
+            <Typography textAlign={'center'} sx={{ color: '#8759f2' }}>{`Ваш вес к ${getResultDay()}`}</Typography>
+            <Chart weight={weight} />
             <Divider sx={{ my: 2 }} />
           </Grid>
           <Grid item xs={12} md={6}>
@@ -62,15 +62,15 @@ export default function StepFour({ currentStep }: { currentStep: number }) {
             <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>Таких же людей как и Вы, добиваются успеха с нашей программой похудения</Typography>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>Апрель, 10</Typography>
+            <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>{getChartDay(6)}</Typography>
             <Typography fontWeight={'600'} textAlign={'center'} variant='h5' sx={{ color: '#8759f2' }}>-2кг</Typography>
             <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>Уже за первую неделю</Typography>
           </Grid>
           <Grid item xs={12}>
             <Divider sx={{ my: 2 }} />
             <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>Индекс массы телы</Typography>
-            <Typography fontWeight={'600'} textAlign={'center'} variant='h5' sx={{ color: '#8759f2' }}>{IMTdesc(Number(IMT(178, 112)))}</Typography>
-            <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>{IMT(178, 112)}</Typography>
+            <Typography fontWeight={'600'} textAlign={'center'} variant='h5' sx={{ color: '#8759f2' }}>{IMTdesc(Number(IMT(height, weight)))}</Typography>
+            <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>{IMT(height, weight)}</Typography>
             <Divider sx={{ my: 2 }} />
           </Grid>
           <Grid item xs={12}>
