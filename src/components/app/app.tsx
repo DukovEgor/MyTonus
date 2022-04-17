@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Cabinet from '../../pages/cabinet';
 import Root from '../../pages/root';
 import SignIn from '../../pages/sign-in';
 import SignUp from '../../pages/signup';
@@ -20,6 +21,10 @@ function App(): JSX.Element {
         <Route
           path={AppRoutes.SignIn}
           element={<SignIn />}
+        />
+        <Route
+          path={AppRoutes.Cabinet}
+          element={<Cabinet />}
         />
       </Routes>
     </BrowserRouter>

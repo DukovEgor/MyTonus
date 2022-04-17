@@ -6,7 +6,7 @@ export default function Chart({ weight }: { weight: number }) {
     <Box>
       <Box display={'flex'} justifyContent='space-between' flexDirection={'row'} mb={3} sx={{ color: '#8759f2' }}>
         <p>{getChartDay(0)}</p>
-        <p>{getChartDay(14)}</p>
+        <p>{getChartDay(30)}</p>
       </Box>
       <svg viewBox="0 0 496 185" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M235.5 72.2502C136.3 11.0502 38.5 0.0835636 2 2.25023V185H494.5V135.75C449.5 140.083 334.7 133.45 235.5 72.2502Z" fill="url(#paint0_linear_898_785)" />
@@ -34,8 +34,8 @@ export default function Chart({ weight }: { weight: number }) {
         </defs>
       </svg>
       <Box display={'flex'} justifyContent='space-between' flexDirection={'row'} sx={{ color: '#8759f2' }}>
-        <p>{weight}</p>
-        <p>{(weight * 0.8).toFixed(0)}</p>
+        <p>{weight}кг</p>
+        <p>{(weight * 0.875896).toFixed(1)}кг</p>
       </Box>
     </Box>
   );

@@ -2,6 +2,7 @@ export enum AppRoutes {
   Root = '/',
   SignIn = '/signin',
   SignUp = '/signup',
+  Cabinet = '/cabinet',
 }
 
 export enum HTTP_CODE {

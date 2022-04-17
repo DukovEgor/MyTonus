@@ -35,7 +35,7 @@ export default function StepFour({ currentStep }: { currentStep: number }) {
     setTimeout(() => {
       setMessage(processingMessage[0]);
 
-    }, 3000);
+    }, 1700);
     return () => {
       processingMessage.reverse().pop();
     };
@@ -52,18 +52,18 @@ export default function StepFour({ currentStep }: { currentStep: number }) {
       {processingMessage.length === 0 && (
         <Grid container spacing={3} mb={4} pl={3}>
           <Grid item xs={12}>
-            <Typography fontWeight={'600'} variant='h4' textAlign={'center'} sx={{ color: '#00d4e6' }}>{(weight * 0.8).toFixed(0)}кг</Typography>
+            <Typography fontWeight={'600'} variant='h4' textAlign={'center'} sx={{ color: '#00d4e6' }}>{(weight * 0.875896).toFixed(1)}кг</Typography>
             <Typography textAlign={'center'} sx={{ color: '#8759f2' }}>{`Ваш вес к ${getResultDay()}`}</Typography>
             <Chart weight={weight} />
             <Divider sx={{ my: 2 }} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography fontWeight={'600'} variant='h5' textAlign={'center'} sx={{ color: '#8759f2' }}>87%</Typography>
+            <Typography fontWeight={'600'} variant='h5' textAlign={'center'} sx={{ color: '#8759f2' }}>97%</Typography>
             <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>Таких же людей как и Вы, добиваются успеха с нашей программой похудения</Typography>
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>{getChartDay(6)}</Typography>
-            <Typography fontWeight={'600'} textAlign={'center'} variant='h5' sx={{ color: '#8759f2' }}>-2кг</Typography>
+            <Typography fontWeight={'600'} textAlign={'center'} variant='h5' sx={{ color: '#8759f2' }}>-2кг воды и -1.5кг жира</Typography>
             <Typography textAlign={'center'} fontWeight={'300'} variant='h6'>Уже за первую неделю</Typography>
           </Grid>
           <Grid item xs={12}>
