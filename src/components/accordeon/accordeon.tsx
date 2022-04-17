@@ -22,15 +22,14 @@ const Accordion = styled((props: AccordionProps) => (
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '1.2rem', color: '#000' }} />}
     {...props}
   />
 ))(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, .05)'
-      : 'rgba(0, 0, 0, .03)',
-  flexDirection: 'row-reverse',
+  backgroundColor: '#f3f4f5',
+  borderRadius: '10px',
+  color: '#000',
+  flexDirection: 'row',
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
   },
@@ -54,7 +53,7 @@ export default function Accordeon() {
 
   return (
     <div>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ borderRadius: 2, mb: 1 }}>
+      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ borderRadius: '10px', mb: 1 }}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography>Collapsible Group Item #1</Typography>
         </AccordionSummary>

@@ -4,6 +4,8 @@ import { AuthorizationStatus, NameSpace } from '../utils/conts';
 const initialState = {
   user: {},
   authorizationStatus: AuthorizationStatus.NoAuth,
+  weight: 0,
+  height: 0,
 };
 
 export const userProcess = createSlice({
@@ -16,7 +18,13 @@ export const userProcess = createSlice({
     setUserData: (state, action) => {
       state.user = action.payload;
     },
+    setUserWeight: (state, action) => {
+      state.weight = action.payload;
+    },
+    setUserHeight: (state, action) => {
+      state.height = action.payload;
+    },
   },
 });
 
-export const { setUserData, requireAuthorization } = userProcess.actions;
+export const { setUserData, requireAuthorization, setUserHeight, setUserWeight  } = userProcess.actions;

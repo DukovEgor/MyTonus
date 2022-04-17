@@ -1,4 +1,17 @@
-export const IMT = (height: number, weight: number) => Number((weight / (Math.pow(height, 2))) * 10000).toFixed(1);
+export const getResultDay = () => {
+  const now = new Date();
+  now.setDate(now.getDate() + 30);
+  return now.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' });
+};
+export const getChartDay = (days: number) => {
+  const now = new Date();
+  now.setDate(now.getDate() + days);
+  return now.toLocaleDateString('ru-RU', { month: 'long', day: 'numeric' });
+};
+
+
+export const IMT = (height: number, weight: number) => ((weight / Math.pow(height, 2)) * 10000).toFixed(1);
+
 
 export const IMTdesc = (imt: number): string => {
   switch (Math.ceil(imt)) {

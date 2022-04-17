@@ -8,7 +8,7 @@ import { steps } from '../../utils/conts';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import DateAdapter from '@mui/lab/AdapterDayjs';
-import { startRegistration } from '../../store/api-actions';
+import { setUserHeight, setUserWeight } from '../../store/user-process';
 
 export default function StepTwo({ currentStep }: { currentStep: number }) {
 
@@ -18,8 +18,9 @@ export default function StepTwo({ currentStep }: { currentStep: number }) {
   const dispatch = useAppDispatch();
 
   const handleNext: SubmitHandler<FieldValues> = (data) => {
-
-    dispatch(startRegistration(data));
+    dispatch(setUserWeight(data.weight));
+    dispatch(setUserHeight(data.height));
+    dispatch(setCurrentStep(currentStep + 1));
   };
 
   const handleBack = () => {

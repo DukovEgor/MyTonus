@@ -52,6 +52,11 @@ export default function SignIn() {
                 label='Логин'
                 {...register('login', {
                   required: 'Введите логин',
+                  pattern: {
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: 'Проверьте корректность введенной электронной почты',
+                  },
                 })}
               />
             </Grid>
@@ -59,14 +64,10 @@ export default function SignIn() {
               <TextField
                 fullWidth
                 variant='outlined'
+                type={'password'}
                 label='Пароль'
                 {...register('password', {
                   required: 'Введите пароль',
-                  pattern: {
-                    value:
-                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                    message: 'Проверьте корректность введенной электронной почты',
-                  },
                 })}
               />
             </Grid>
@@ -81,12 +82,12 @@ export default function SignIn() {
                 Войти
               </Button>
               <Grid container>
-                <Grid item xs={12} md={5}>
+                <Grid item xs={12} lg={9}>
                   <Link to="#">
                     Забыли пароль?
                   </Link>
                 </Grid>
-                <Grid item xs={12} md={7}>
+                <Grid item xs={12} lg={3}>
                   <Link to="#">
                     {'Еще нет аккаунта? Регистрация.'}
                   </Link>
