@@ -1,4 +1,5 @@
 # Руководство по работе с проектом
+Посмотреть продакшн-версию можно тут [MyTonus](https://dukov-my-tonus.vercel.app/).
 
 Данный проект создан с помощью [Create React App](https://github.com/facebook/create-react-app).
 
